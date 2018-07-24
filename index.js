@@ -45,6 +45,7 @@ var morgan = require("morgan");
 var bodyParser = require("body-parser");
 // import * as request from 'request';
 var api_module_1 = require("./api/api.module");
+var PORT = process.env.PORT || 5000;
 admin.initializeApp();
 var vm = express();
 vm.use(cors());
@@ -58,9 +59,7 @@ var bootstrap = function (instance) { return __awaiter(_this, void 0, void 0, fu
             case 0: return [4 /*yield*/, core_1.NestFactory.create(api_module_1.ApiModule, instance)];
             case 1:
                 module = _a.sent();
-                return [4 /*yield*/, module.init()];
-            case 2:
-                _a.sent();
+                module.listen(PORT);
                 return [2 /*return*/];
         }
     });
